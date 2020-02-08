@@ -17,6 +17,12 @@ namespace pdftoimage
     {
         public Form1()
         {
+            var files= Directory.GetFiles(Directory.GetCurrentDirectory());
+            foreach (string file in files)
+            {
+                if(file.Contains("convertido"))
+                File.Delete(file);
+            }
             InitializeComponent();
         }
 
@@ -77,7 +83,8 @@ namespace pdftoimage
             img = ResizeImage(img, largura, altura);
 
             img.Save(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\" + png_filename, ImageFormat.Png);
-            MessageBox.Show("realizado com sucesso", "pdf para imagem - Luiz-HSSD");
+                
+                MessageBox.Show("realizado com sucesso", "pdf para imagem - Luiz-HSSD");
             }
             else
             {
